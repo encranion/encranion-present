@@ -1,0 +1,3 @@
+BLANK -1 .5
+RESPONSE 4 exampleimage.png 1 37 exampleimage2.png 39 exampleimage2.png
+BLANK 1 1
