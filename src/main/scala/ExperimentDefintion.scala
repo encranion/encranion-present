@@ -49,7 +49,6 @@ object ExperimentDefinition {
 
   def parseResponseParams(params : Vector[String]) : ResponseStimulus = {
     try {
-      println(params)
       val marker = params(0).toInt
       val promptPath = params(1)
       val confirmDur = (params(2).toDouble * 1000).toLong

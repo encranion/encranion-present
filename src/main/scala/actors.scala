@@ -3,8 +3,9 @@ package com.encranion.present
 import akka.actor.{Actor, ActorRef, PoisonPill, Props}
 import javax.swing.{JFrame, WindowConstants, JLabel}
 import java.awt.{Frame, Color}
-import java.awt.event.WindowEvent
-import scala.collection.mutable.ArrayBuffer
+import java.awt.{KeyEventDispatcher, KeyboardFocusManager}
+import java.awt.event.KeyEvent
+import java.util.concurrent.CountDownLatch
 
 trait ExperimentAction
 case object StartExperiment extends ExperimentAction
@@ -47,7 +48,6 @@ class BlockingSwingImageIconPresenterActor(val stimulus : ImageStimulus,
 
   def receive = {
     case PresentStimulus => {
-      println(s"Presenting $stimulus")
       val image = store.get(stimulus)
       val label = new JLabel(image)
       label.setBounds(0,0, image.getIconWidth, image.getIconHeight)
@@ -55,10 +55,74 @@ class BlockingSwingImageIconPresenterActor(val stimulus : ImageStimulus,
       jFrame.add(label)
       jFrame.setVisible(true)
       jFrame.repaint()
+      marker.markEvent(stimulus.marker)
       Thread.sleep(stimulus.durationInMillis)
       jFrame.remove(label)
       label.setVisible(false)
       jFrame.repaint()
+      next ! PresentStimulus
+      self ! PoisonPill
+    }
+  }
+}
+
+class BlockingResponseSwingImageIconPresenter(val stimulus : ResponseStimulus,
+                                              val store : ResponseImageIconStore,
+                                              val jFrame : JFrame,
+                                              val marker : EventWriter,
+                                              val responseWriter : ResponseWriter,
+                                              val next : ActorRef)
+  extends BlockingSwingPresenterActor with HasNextActor {
+
+
+  def waitForResponse(keySet : Set[Int]) : Int = {
+    var keyPressed : Int = -1
+    val latch = new CountDownLatch(1)
+    val dispatcher = new KeyEventDispatcher() { // Anonymous class invoked from EDT
+      def dispatchKeyEvent(e: KeyEvent): Boolean = {
+        if (keySet.contains(e.getKeyCode)) {
+          latch.countDown()
+          keyPressed = e.getKeyCode
+        }
+        false
+      }
+    }
+    KeyboardFocusManager.getCurrentKeyboardFocusManager.addKeyEventDispatcher(dispatcher)
+    latch.await() // current thread waits here until countDown() is called
+    KeyboardFocusManager.getCurrentKeyboardFocusManager.removeKeyEventDispatcher(dispatcher)
+    return keyPressed
+  }
+
+  def receive = {
+    case PresentStimulus => {
+
+      val promptImage = store.getPrompt(stimulus)
+      val promptLabel = new JLabel(promptImage)
+      promptLabel.setBounds(0,0, promptImage.getIconWidth, promptImage.getIconHeight)
+      promptLabel.setVisible(true)
+      jFrame.add(promptLabel)
+      jFrame.setVisible(true)
+      jFrame.repaint()
+      marker.markEvent(stimulus.marker)
+
+      val res = waitForResponse(stimulus.confirmPrompts.keySet)
+      responseWriter.markRespose(stimulus, res)
+
+      jFrame.remove(promptLabel)
+      promptLabel.setVisible(false)
+
+      val confirmImage = store.getOptionResponsePrompt(stimulus,res)
+      val confirmLabel = new JLabel(confirmImage)
+      confirmLabel.setBounds(0,0, confirmImage.getIconWidth, confirmImage.getIconHeight)
+      confirmLabel.setVisible(true)
+      jFrame.add(confirmLabel)
+      jFrame.setVisible(true)
+      jFrame.repaint()
+      Thread.sleep(stimulus.confirmPromptDurationInMillis)
+      jFrame.remove(confirmLabel)
+      confirmLabel.setVisible(false)
+      jFrame.repaint()
+
       next ! PresentStimulus
       self ! PoisonPill
     }
@@ -74,8 +138,11 @@ class BlockingSoundPresenterActor(val stimulus : SoundStimulus,
 
   def receive = {
     case PresentStimulus => {
-      println(s"Presenting $stimulus")
+      val clip = store.get(stimulus)
+      clip.start
+      marker.markEvent(stimulus.marker)
       Thread.sleep(stimulus.endTimeMillis - stimulus.startTimeMillis)
+      clip.stop
       next ! PresentStimulus
       self ! PoisonPill
     }
@@ -89,7 +156,7 @@ class BlockingBlankPresenterActor(val stimulus : BlankStimulus,
 
   def receive = {
     case PresentStimulus => {
-      println(s"Presenting $stimulus")
+      marker.markEvent(stimulus.marker)
       Thread.sleep(stimulus.durationInMillis)
       next ! PresentStimulus
       self ! PoisonPill
@@ -112,7 +179,11 @@ abstract class ExperimentSupervisor(val expDef : ExperimentDefinition) extends A
 
 
 class BlockingSwingExperimentSupervisor(override val expDef : ExperimentDefinition,
-                                        val eventWriter : EventWriter, val imageIconStore : ImageIconStore)
+                                        val eventWriter : EventWriter,
+                                        val responseWriter : ResponseWriter,
+                                        val imageIconStore : ImageIconStore,
+                                        val audioClipStore : AudioClipStore,
+                                        val responseImageIconStore : ResponseImageIconStore)
   extends ExperimentSupervisor(expDef){
 
     val jFrame = new JFrame("experiment")
@@ -134,6 +205,11 @@ class BlockingSwingExperimentSupervisor(override val expDef : ExperimentDefiniti
           context.actorOf(Props(classOf[BlockingSwingImageIconPresenterActor],
             is, imageIconStore, jFrame, eventWriter, nextActor))
         case bs: BlankStimulus => context.actorOf(Props(classOf[BlockingBlankPresenterActor], bs, eventWriter, nextActor))
+        case rs : ResponseStimulus =>
+          context.actorOf(Props(classOf[BlockingResponseSwingImageIconPresenter],
+            rs, responseImageIconStore, jFrame, eventWriter, responseWriter, nextActor))
+        case ss : SoundStimulus =>
+          context.actorOf(Props(classOf[BlockingSoundPresenterActor], ss, audioClipStore, eventWriter, nextActor))
         case _ => ???
       }
   }
@@ -143,7 +219,6 @@ class BlockingSwingExperimentSupervisor(override val expDef : ExperimentDefiniti
       firstActor ! PresentStimulus
     }
     case EndExperiment =>  {
-      println("Ending experiment")
       jFrame.dispose()
       context.parent ! PoisonPill
       self ! PoisonPill

@@ -1,0 +1,166 @@
+BLANK 1 .5
+BLANK 1 .5
+BLANK 1 .5
+BLANK 1 .5
+BLANK 1 .5
+BLANK 2 5
+SOUND 193 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D93.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 115 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D15.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 106 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D6.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 159 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D59.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 184 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D84.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 199 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D99.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 117 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D17.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 133 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D33.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 145 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D45.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 188 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D88.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 200 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D100.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 126 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D26.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 114 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D14.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 191 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D91.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 161 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D61.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 182 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D82.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 151 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D51.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 119 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D19.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 107 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D7.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 129 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D29.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 161 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D61.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 119 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D19.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 191 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D91.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 114 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D14.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 151 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D51.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 145 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D45.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 133 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D33.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 115 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D15.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 126 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D26.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 200 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D100.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 184 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D84.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 106 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D6.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 107 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D7.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 199 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D99.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 159 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D59.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 117 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D17.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 182 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D82.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 188 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D88.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 129 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D29.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000
+SOUND 193 0.000000 5.000000 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/wavs/D93.wav
+BLANK 2 3.000000
+RESPONSE 3 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_prompt.png 0.500000 37 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_yes.png 39 /Users/dhowarth/encranion/leelab-exp-gen/stimuli/musicality/musical_response_no.png
+BLANK 2 1.000000

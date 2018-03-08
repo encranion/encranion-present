@@ -1,36 +1,73 @@
 package com.encranion.present
 
-import akka.actor.{Actor, ActorSystem, Props, ActorRef, PoisonPill}
-import scala.concurrent.duration._
-import com.typesafe.config.ConfigFactory
 import scala.io.{Source, StdIn}
 import java.nio.file.{Files, Path, Paths}
+import java.nio.ByteBuffer
+import java.io.{BufferedWriter, FileWriter, OutputStream, Writer}
+import purejavacomm._
+
+import akka.actor.{ActorSystem, Props}
 
 
 case object RunBlock
 
 trait EventWriter {
-  def markEvent(i : Long) : Unit
+  def markEvent(i : Int) : Unit
+}
+
+trait ResponseWriter{
+  def markRespose(rs : ResponseStimulus, option : Int)
+}
+
+class MultiEventWriter(val eventWriters : Vector[EventWriter]) extends  EventWriter {
+  def markEvent(i : Int) = {
+    eventWriters.foreach(_.markEvent(i))
+  }
 }
 
 class PrintLnEventWriter extends EventWriter {
-  def markEvent(i : Long) = println(i)
+  def markEvent(i : Int) = println(i)
 }
 
-class PrintTimeActor(val eventWriter : EventWriter, val next : ActorRef) extends Actor {
-  def receive = {
-    case RunBlock => {
-      eventWriter.markEvent(System.currentTimeMillis())
-      next ! RunBlock
+class WriterEventWriter(val writer : Writer) extends EventWriter {
+  def markEvent(i : Int) = {
+    val time = System.currentTimeMillis()
+    writer.write(s"$time $i\n")
+    writer.flush()
+  }
+}
+
+class WriterResponseWriter(val writer : Writer) extends ResponseWriter {
+  override def markRespose(rs: ResponseStimulus, option: Int): Unit = {
+    val time = System.currentTimeMillis()
+    writer.write(s"$time $option\n")
+    writer.flush()
+  }
+}
+
+class ESUEventWriter(val portName : String ) extends EventWriter{
+
+  val sp : SerialPort = CommPortIdentifier.getPortIdentifier(portName)
+    .open("ESUMarker",1000).asInstanceOf[SerialPort]
+  sp.setSerialPortParams(57600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE)
+  val outStream : OutputStream = sp.getOutputStream()
+
+  val byteStart : Array[Byte] = Array[Byte](86,90,0,4,1)
+
+  def markEvent(i : Int) : Unit = {
+    val dataBytes : Array[Byte] = ByteBuffer.allocate(4).putInt(i).array()
+    val dataBytesInt = dataBytes.map{
+      b => if (b < 0) 256 + b else b
     }
+    val dataBytesSum = dataBytesInt(0) + dataBytesInt(1) + dataBytesInt(2) + dataBytesInt(3)
+    val checksum : Array[Byte] = Array((255 - ((5 + dataBytesSum) % 256)).toByte)
+    val sendBytes : Array[Byte] = byteStart ++ dataBytes ++ checksum
+
+    outStream.write(sendBytes)
   }
+
 }
 
-class FooPrinter extends Actor {
-  def receive = {
-    case RunBlock => println("foo")
-  }
-}
 
 object PresenterApp {
 
@@ -72,12 +109,17 @@ object PresenterApp {
     val lines = Source.fromFile(expDefPath.toFile).getLines.toVector
     val expDef = ExperimentDefinition.fromStrings(lines)
 
-    val eventWriter = new PrintLnEventWriter
+    val fileWriter = new WriterEventWriter(new BufferedWriter(new FileWriter(timingOutputPath.toFile)))
+    val eventWriter = new MultiEventWriter(Vector(fileWriter))
+    val responseWriter = new WriterResponseWriter(new BufferedWriter(new FileWriter(responseOutputPath.toFile)))
     val imageIconStore = StimuliStore.buildImageIconStore(expDef.stimuli)
+    val audioClipStore = StimuliStore.buildAudioClipStore(expDef.stimuli)
+    val responseImageIconStore = StimuliStore.buildResponseImageIconStore(expDef.stimuli)
 
-    val system = akka.actor.ActorSystem.create("presenterRoot")
+    val system = ActorSystem.create("presenterRoot")
     try {
-      val experimentActor = system.actorOf(Props(classOf[BlockingSwingExperimentSupervisor], expDef, eventWriter, imageIconStore))
+      val experimentActor = system.actorOf(Props(classOf[BlockingSwingExperimentSupervisor],
+        expDef, eventWriter, responseWriter, imageIconStore, audioClipStore, responseImageIconStore))
       experimentActor ! StartExperiment
     } catch {
       case e : Throwable => {
@@ -86,22 +128,6 @@ object PresenterApp {
         System.exit(0)
       }
     }
-    /*
-    val plWriter = new PrintLnEventWriter
-    val system = akka.actor.ActorSystem.create("presenterRoot")
-    val fooPrinterRef = system.actorOf(Props(classOf[FooPrinter]))
-    val printTimeRef = system.actorOf(Props(classOf[PrintTimeActor], plWriter, fooPrinterRef))
-    /*import system.dispatcher
-    val schedule = system.scheduler.schedule(0 milliseconds, 1 milliseconds, printTimeRef, RunBlock)
-    Thread.sleep(20)
-    schedule.cancel
-    */
-    for( i <- (0 to 100)) {
-      printTimeRef ! RunBlock
-      Thread.sleep(1)
-    }
-    system.terminate
-    */
   }
 
 }

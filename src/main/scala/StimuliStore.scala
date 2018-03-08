@@ -24,9 +24,11 @@ class ImageIconStore(stimuli : Vector[ImageStimulus]) {
 class AudioClipStore(stimuli : Vector[SoundStimulus]){
   val uniqueStim : Map[String, Clip] = stimuli.map(_.path).toSet.map{p : String => {
     val sound = AudioSystem.getAudioInputStream(new File(p))
-    val info = new DataLine.Info(classOf[Clip], sound.getFormat)  // DataLine.Info
-    val clip : Clip = AudioSystem.getLine(info).asInstanceOf[Clip]
+    //val info = new DataLine.Info(classOf[Clip], sound.getFormat)  // DataLine.Info
+    //val clip : Clip = AudioSystem.getLine(info).asInstanceOf[Clip]
+    val clip : Clip = AudioSystem.getClip()
     clip.open(sound)
+    /*
     clip.addLineListener(new LineListener() {
       def update(event: LineEvent) {
         if (event.getType == LineEvent.Type.STOP) {
@@ -34,6 +36,7 @@ class AudioClipStore(stimuli : Vector[SoundStimulus]){
         }
       }
     })
+    */
     (p, clip)
   }}.toMap
   def get(stimulus : SoundStimulus) : Clip = {
@@ -43,7 +46,7 @@ class AudioClipStore(stimuli : Vector[SoundStimulus]){
   }
 }
 
-class ReponseImageIconStore(stimuli : Vector[ResponseStimulus]){
+class ResponseImageIconStore(stimuli : Vector[ResponseStimulus]){
   val uniquePrompts : Map[String, ImageIcon] = stimuli.map(_.promptPath).toSet.map{ p : String =>
     (p, ImageIconUtils.createIfExists(p))
   }.toMap
@@ -78,6 +81,10 @@ object StimuliStore {
   })
   def buildAudioClipStore(stimuli : Vector[Stimulus]) = new AudioClipStore(stimuli.flatMap{
     case s: SoundStimulus => Some(s)
+    case _ => None
+  })
+  def buildResponseImageIconStore(stimuli : Vector[Stimulus]) = new ResponseImageIconStore(stimuli.flatMap{
+    case s: ResponseStimulus => Some(s)
     case _ => None
   })
 
