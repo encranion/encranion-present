@@ -3,14 +3,14 @@ package com.encranion.present
 import scala.io.{Source, StdIn}
 import java.nio.file.{Files, Path, Paths}
 import java.nio.ByteBuffer
+import java.io._
+
 import java.io.{BufferedWriter, FileWriter, OutputStream, Writer}
 import purejavacomm._
-
 import akka.actor.{ActorSystem, Props}
 
-
 object EventFileReader {
-  def readABMThirdPartyBin(p : String, returnPacketType : Int): Vector[(Int, Int)] ={
+  def readABMThirdPartyBin(p : String): Vector[(Int, Int)] ={
     import java.io.RandomAccessFile
     import java.nio.channels.FileChannel
     val aFile: RandomAccessFile = new RandomAccessFile(p, "r")
@@ -68,7 +68,7 @@ class PrintLnEventWriter extends EventWriter {
 class WriterEventWriter(val writer : Writer) extends EventWriter {
   def markEvent(i : Int) = {
     val time = System.currentTimeMillis()
-    writer.write(s"$time $i\n")
+    writer.write(s"$time $i\r")
     writer.flush()
   }
 }
@@ -76,7 +76,7 @@ class WriterEventWriter(val writer : Writer) extends EventWriter {
 class WriterResponseWriter(val writer : Writer) extends ResponseWriter {
   override def markRespose(rs: ResponseStimulus, option: Int): Unit = {
     val time = System.currentTimeMillis()
-    writer.write(s"$time $option\n")
+    writer.write(s"$time $option\r")
     writer.flush()
   }
 }
@@ -108,6 +108,18 @@ class ESUEventWriter(val portName : String ) extends EventWriter{
 object PresenterApp {
 
   def main(args : Array[String]) : Unit = {
+    try{
+      if( args(0) == "readevents" ){
+        val eveBinPath = Paths.get(args(1))
+        val eveOutPath = Paths.get(args(2))
+
+        val parsedEvents = EventFileReader.readABMThirdPartyBin(eveBinPath.toString)
+        val eveString : String = parsedEvents.map(t => Array(t._1, t._2).mkString(" ")).mkString("\r")
+        new PrintWriter(eveOutPath.toString) { write(eveString); close}
+        System.exit(0)
+      }
+    }catch {case _ => null}
+
     if (args.length < 3) {
       println(
         """Not enough input arguments.
