@@ -9,8 +9,44 @@ import purejavacomm._
 import akka.actor.{ActorSystem, Props}
 
 
-case object RunBlock
+object EventFileReader {
+  def readABMThirdPartyBin(p : String, returnPacketType : Int): Vector[(Int, Int)] ={
+    import java.io.RandomAccessFile
+    import java.nio.channels.FileChannel
+    val aFile: RandomAccessFile = new RandomAccessFile(p, "r")
+    val inChannel: FileChannel = aFile.getChannel
+    val fileSize: Long = inChannel.size
+    val buffer: ByteBuffer = ByteBuffer.allocate(fileSize.toInt)
+    inChannel.read(buffer)
+    buffer.flip
 
+    // Timestamp, type, bytes
+    // val foo = Array.ofDim[Byte](200)
+    //buffer.get(foo)
+    //println(foo.map(b => if(b < 0) 256+b else b).mkString(" "))
+    var events = List[(Int,Int)]()
+
+    val flagBytes = Array.ofDim[Byte](2)
+    println(buffer)
+    while(buffer.hasRemaining) {
+      buffer.get(flagBytes)
+      val messageCounter = buffer.get
+      val timestampBytes : Array[Byte] = Array[Byte](buffer.get, buffer.get, buffer.get, buffer.get)
+      val packLenBytes : Array[Byte] = Array[Byte](buffer.get, buffer.get)
+      val packetLen =  packLenBytes(0)*256 + packLenBytes(1).toInt
+      val packetType = buffer.get
+      val dataBytes : Array[Byte] = Array.tabulate[Byte](packetLen-2)(_ => buffer.get)
+      val checksumReadByte = buffer.get
+
+      val checksumComputed = 255 - ((((messageCounter + packetType + (timestampBytes ++ packLenBytes ++ dataBytes).foldLeft(0)((i, c) => i + c)) % 256) + 256) % 256)
+      val checksumRead = if (checksumReadByte < 0) 256 + checksumReadByte else checksumReadByte
+      if (checksumRead != checksumComputed) throw new Exception("check sum incorrect")
+      events = (ByteBuffer.wrap(timestampBytes).getInt, ByteBuffer.wrap(dataBytes).getInt)::events
+    }
+    return events.reverse.toVector
+  }
+
+}
 trait EventWriter {
   def markEvent(i : Int) : Unit
 }
